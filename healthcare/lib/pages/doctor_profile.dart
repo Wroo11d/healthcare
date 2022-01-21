@@ -63,91 +63,170 @@ class doctorsProfile extends StatelessWidget {
                     ),
                   ),
                 ),
-                /*SliverList(
-                    delegate: SliverChildListDelegate([
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'dr mohammed is excellent doctor graduated from university of baghdad sice he has a clinic in bla blab',
-                          style: TextStyle(
-                              height: 1.4,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  )
-                ])),*/
+                Expanded(
+                  child: SliverList(
+                      delegate: SliverChildListDelegate([
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            //height: 100,
 
-                SliverList(
-                    delegate: SliverChildListDelegate([
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Open Time: 08:00:00 AM',
-                          style: TextStyle(
-                              height: 1.4,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        Text(
-                          'Close Time: 12:00:00 AM',
-                          style: TextStyle(
-                              height: 1.4,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  )
-                ])),
-                SliverList(
-                    delegate: SliverChildListDelegate([
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Days: All',
-                          style: TextStyle(
-                              height: 1.4,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  )
-                ])),
-                SliverList(
-                    delegate: SliverChildListDelegate([
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'baghdad',
-                          style: TextStyle(
-                              height: 1.4,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  )
-                ]))
+                            //width: 1000,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                //border: Border.all(width: 3),
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade500,
+                                      offset: Offset(4.0, 4.0),
+                                      blurRadius: 10.0,
+                                      spreadRadius: 0.7),
+                                  BoxShadow(
+                                      color: Colors.white,
+                                      offset: Offset(-4.0, -4.0),
+                                      blurRadius: 15.0,
+                                      spreadRadius: 1.0)
+                                ]),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, top: 20),
+                                  child: Center(
+                                    child: Text(
+                                      'Open Time: 08:00:00 AM ',
+                                      style: TextStyle(
+                                          height: 1.4,
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20, right: 20, bottom: 20),
+                                    child: Text(
+                                      'close Time: 08:00:00 AM ',
+                                      style: TextStyle(
+                                          height: 1.4,
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ])),
+                ),
+                Expanded(
+                  child: SliverList(
+                      delegate: SliverChildListDelegate([
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 100,
+                            //width: 1000,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                //border: Border.all(width: 3),
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade500,
+                                      offset: Offset(4.0, 4.0),
+                                      blurRadius: 10.0,
+                                      spreadRadius: 0.7),
+                                  BoxShadow(
+                                      color: Colors.white,
+                                      offset: Offset(-4.0, -4.0),
+                                      blurRadius: 15.0,
+                                      spreadRadius: 1.0)
+                                ]),
+                            child: Center(
+                              child: Text(
+                                'Days: All',
+                                style: TextStyle(
+                                    height: 1.4,
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ])),
+                ),
+                Expanded(
+                  child: SliverList(
+                      delegate: SliverChildListDelegate([
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            //height: 100,
+
+                            //width: 1000,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[100],
+                                //border: Border.all(width: 3),
+                                borderRadius: BorderRadius.circular(30),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade500,
+                                      offset: Offset(4.0, 4.0),
+                                      blurRadius: 10.0,
+                                      spreadRadius: 0.7),
+                                  BoxShadow(
+                                      color: Colors.white,
+                                      offset: Offset(-4.0, -4.0),
+                                      blurRadius: 15.0,
+                                      spreadRadius: 1.0)
+                                ]),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Center(
+                                    child: Text(
+                                      'Dr mohammed goos octor graduated from university of baghdad and has degree from harvard university and ived in ressua fo so long he is married to a doctor alsp love with his and graduated from same cpollage but other majority ',
+                                      style: TextStyle(
+                                          height: 1.4,
+                                          color: Colors.black87,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ])),
+                ),
               ],
             )
           ],
