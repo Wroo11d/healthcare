@@ -1,8 +1,13 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:healthcare/models/doctors.dart';
+
+import '../url.dart';
 
 class doctorsProfile extends StatelessWidget {
+  dynamic doctorList;
+  doctorsProfile(this.doctorList);
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Colors.white,
@@ -17,8 +22,8 @@ class doctorsProfile extends StatelessWidget {
                     background: Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/doctorsDefault.jpg'),
+                              image: NetworkImage(
+                                  '$baseUrl${doctorList.image}'),
                               fit: BoxFit.cover)),
                       child: Container(
                         decoration: BoxDecoration(
@@ -35,21 +40,21 @@ class doctorsProfile extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                'DR.Mohammed',
-                                style: TextStyle(
+                                '${doctorList.name}',
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 50),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    'Baghdad',
-                                    style: TextStyle(
+                                    '${doctorList.location}',
+                                    style: const TextStyle(
                                         color: Colors.black87,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
@@ -85,7 +90,7 @@ class doctorsProfile extends StatelessWidget {
                                       offset: Offset(4.0, 4.0),
                                       blurRadius: 10.0,
                                       spreadRadius: 0.7),
-                                  BoxShadow(
+                                  const BoxShadow(
                                       color: Colors.white,
                                       offset: Offset(-4.0, -4.0),
                                       blurRadius: 15.0,
@@ -100,8 +105,8 @@ class doctorsProfile extends StatelessWidget {
                                       left: 20, right: 20, top: 20),
                                   child: Center(
                                     child: Text(
-                                      'Open Time: 08:00:00 AM ',
-                                      style: TextStyle(
+                                      'Open Time: ${doctorList.openTime}',
+                                      style: const TextStyle(
                                           height: 1.4,
                                           color: Colors.black87,
                                           fontWeight: FontWeight.bold,
@@ -114,8 +119,8 @@ class doctorsProfile extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         left: 20, right: 20, bottom: 20),
                                     child: Text(
-                                      'close Time: 08:00:00 AM ',
-                                      style: TextStyle(
+                                      'Close Time: ${doctorList.closeTime} ',
+                                      style: const TextStyle(
                                           height: 1.4,
                                           color: Colors.black87,
                                           fontWeight: FontWeight.bold,
@@ -152,7 +157,7 @@ class doctorsProfile extends StatelessWidget {
                                       offset: Offset(4.0, 4.0),
                                       blurRadius: 10.0,
                                       spreadRadius: 0.7),
-                                  BoxShadow(
+                                  const BoxShadow(
                                       color: Colors.white,
                                       offset: Offset(-4.0, -4.0),
                                       blurRadius: 15.0,
@@ -160,8 +165,8 @@ class doctorsProfile extends StatelessWidget {
                                 ]),
                             child: Center(
                               child: Text(
-                                'Days: All',
-                                style: TextStyle(
+                                'Days: ${doctorList.days}',
+                                style: const TextStyle(
                                     height: 1.4,
                                     color: Colors.black87,
                                     fontWeight: FontWeight.bold,
@@ -196,6 +201,7 @@ class doctorsProfile extends StatelessWidget {
                                       offset: Offset(4.0, 4.0),
                                       blurRadius: 10.0,
                                       spreadRadius: 0.7),
+                                  // ignore: prefer_const_constructors
                                   BoxShadow(
                                       color: Colors.white,
                                       offset: Offset(-4.0, -4.0),
@@ -210,8 +216,8 @@ class doctorsProfile extends StatelessWidget {
                                   padding: const EdgeInsets.all(20),
                                   child: Center(
                                     child: Text(
-                                      'Dr mohammed goos octor graduated from university of baghdad and has degree from harvard university and ived in ressua fo so long he is married to a doctor alsp love with his and graduated from same cpollage but other majority ',
-                                      style: TextStyle(
+                                      '${doctorList.description} ',
+                                      style: const TextStyle(
                                           height: 1.4,
                                           color: Colors.black87,
                                           fontWeight: FontWeight.bold,

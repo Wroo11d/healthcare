@@ -1,297 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare/models/hospitals.dart';
+import '../url.dart';
 import 'doctor_profile.dart';
 import 'hospital_profile.dart';
 
 class allH extends StatelessWidget {
+  int indexing;
+  List<List<dynamic>> hospitalsLis;
+bool isPublic;
+  // Hospital hospitalsLis;
+  allH(this.hospitalsLis, this.indexing,this.isPublic, {Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => Scaffold(
-      backgroundColor: Colors.black12,
       appBar: AppBar(
-        title: Text('Healthcare'),
+        title: const Text('All hospitals'),
         elevation: 0,
         centerTitle: true,
       ),
-      body: /* ListWheelScrollView(
-        itemExtent: 250,
-        physics: FixedExtentScrollPhysics(),*/
-          //squeeze: 1.1,
-          /* onSelectedItemChanged: (index) => 
-          showToast('selected item: ${index +1}'),*/
-          //perspective: 0.001,
-          //diameterRatio: 1.5,
-          SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => hospitalsProfile()),
-                    );
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(20), // Image border
-                            child: SizedBox.fromSize(
-                              size: Size.fromRadius(55), // Image radius
-                              child: Image.network(
-                                  'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                                  height: 100,
-                                  fit: BoxFit.cover),
-                            ),
-                          )
-                          /* Image.network(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                            height: 100,
-                            fit: BoxFit.cover,
-                            
-                          ),*/
-                        ],
-                      ),
-
-                      /*Ink.image(
-                        image: NetworkImage(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw='),
-                        //   colorFilter: ColorFilters.greyscale,
-                        /*child: InkWell(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: ListView.builder(
+                    itemCount: hospitalsLis[indexing].length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => doctorsProfile()),
+                                  builder: (context) => hospitalsProfile(hospitalsLis[indexing][index])),
                             );
                           },
-                        ),*/
-                        height: 100,
-
-                        fit: BoxFit.cover,
-                      ),*/
-                      Text(
-                        'Dr basim',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                            fontFamily: 'Mate',
-                            fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => hospitalsProfile()),
-                    );
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(20), // Image border
-                            child: SizedBox.fromSize(
-                              size: Size.fromRadius(55), // Image radius
-                              child: Image.network(
-                                  'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                                  height: 100,
-                                  fit: BoxFit.cover),
-                            ),
-                          )
-                          /* Image.network(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                            height: 100,
-                            fit: BoxFit.cover,
-                            
-                          ),*/
-                        ],
-                      ),
-
-                      /*Ink.image(
-                        image: NetworkImage(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw='),
-                        //   colorFilter: ColorFilters.greyscale,
-                        /*child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => doctorsProfile()),
-                            );
-                          },
-                        ),*/
-                        height: 100,
-
-                        fit: BoxFit.cover,
-                      ),*/
-                      Text(
-                        'Dr mohammed',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => hospitalsProfile()),
-                    );
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(20), // Image border
-                            child: SizedBox.fromSize(
-                              size: Size.fromRadius(55), // Image radius
-                              child: Image.network(
-                                  'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                                  height: 100,
-                                  fit: BoxFit.cover),
-                            ),
-                          )
-                          /* Image.network(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                            height: 100,
-                            fit: BoxFit.cover,
-                            
-                          ),*/
-                        ],
-                      ),
-
-                      /*Ink.image(
-                        image: NetworkImage(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw='),
-                        //   colorFilter: ColorFilters.greyscale,
-                        /*child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => doctorsProfile()),
-                            );
-                          },
-                        ),*/
-                        height: 100,
-
-                        fit: BoxFit.cover,
-                      ),*/
-                      Text(
-                        'Dr sameera',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => hospitalsProfile()),
-                    );
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(20), // Image border
-                            child: SizedBox.fromSize(
-                              size: Size.fromRadius(55), // Image radius
-                              child: Image.network(
-                                  'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                                  height: 100,
-                                  fit: BoxFit.cover),
-                            ),
-                          )
-                          /* Image.network(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw=',
-                            height: 100,
-                            fit: BoxFit.cover,
-                            
-                          ),*/
-                        ],
-                      ),
-
-                      /*Ink.image(
-                        image: NetworkImage(
-                            'https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706504?b=1&k=20&m=1312706504&s=170667a&w=0&h=IcYI9Pm-s-JyeCOgul1DfSQAqY3hVte4uXnStOXbkaw='),
-                        //   colorFilter: ColorFilters.greyscale,
-                        /*child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => doctorsProfile()),
-                            );
-                          },
-                        ),*/
-                        height: 100,
-
-                        fit: BoxFit.cover,
-                      ),*/
-                      Text(
-                        'Cardiac',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    // Image border
+                                    child: SizedBox.fromSize(
+                                      size: const Size.fromRadius(55),
+                                      // Image radius
+                                      child: Image.network(
+                                          '$baseUrl${hospitalsLis[indexing][index].image}',
+                                          height: 100,
+                                          fit: BoxFit.cover),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Text(
+                                '${hospitalsLis[indexing][index].name}',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                    fontFamily: 'Mate',
+                                    fontSize: 24),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
               ),
             ],
           ),

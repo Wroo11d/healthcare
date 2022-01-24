@@ -1,7 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:healthcare/pages/doctors.dart';
 import 'package:healthcare/pages/doctors_category.dart';
+import 'package:healthcare/pages/hospitals.dart';
 import 'package:healthcare/pages/hospitals_types.dart';
 import 'package:healthcare/pages/ml.dart';
 
@@ -35,16 +37,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+
+
+  void initState() {
+    fetchHospitals();
+    fetchHospitalsPrivate();
+    fetchDoctors();
+    fetchDoctorsPrivately();
+
+    super.initState();
+  }
+
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
   int index = 2;
 
   final screens = [doctorsCategories(), ml(), hospitalsTypes()];
+  final text = ['Doctors','Coming soon','Doctors'];
+
   @override
   Widget build(BuildContext context) {
     final items = <Widget>[
-      Icon(Icons.home, size: 30),
-      Icon(Icons.healing, size: 30),
-      Icon(Icons.medical_services, size: 30),
+      const Icon(Icons.home, size: 30),
+      const Icon(Icons.healing, size: 30),
+      const Icon(Icons.medical_services, size: 30),
     ];
     return Container(
       color: Colors.blue,
@@ -54,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
               extendBody: true,
               backgroundColor: Colors.blue,
               appBar: AppBar(
-                title: Text('Healthcare'),
+                title: Text('Healthcare/${text[index]}'),
                 elevation: 0,
                 centerTitle: true,
               ),
