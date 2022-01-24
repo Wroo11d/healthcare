@@ -7,13 +7,13 @@ import 'all_hospitals.dart';
 import 'package:http/http.dart' as http;
 import 'hospital_profile.dart';
 
-List<Hosptials> hospitalsList = [];
-List<PublicHospital> hospitalSctionList = [];
-List<List<PublicHospital>> hos = [];
+late List<Hosptials> hospitalsList;
+late List<PublicHospital> hospitalSctionList;
+late List<List<PublicHospital>> hos = [];
 
-List<HosptialsPrivatly> hospitalsListPrivate = [];
-List<PrivateHospital> hospitalSctionListPrivate = [];
-List<List<PrivateHospital>> hosP = [];
+late List<HosptialsPrivatly> hospitalsListPrivate;
+late List<PrivateHospital> hospitalSctionListPrivate;
+late List<List<PrivateHospital>> hosP = [];
 
 fetchHospitals() async {
   http.Response response;

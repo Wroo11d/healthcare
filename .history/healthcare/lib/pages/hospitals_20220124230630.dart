@@ -7,13 +7,13 @@ import 'all_hospitals.dart';
 import 'package:http/http.dart' as http;
 import 'hospital_profile.dart';
 
-List<Hosptials> hospitalsList = [];
-List<PublicHospital> hospitalSctionList = [];
-List<List<PublicHospital>> hos = [];
+late List<Hosptials> hospitalsList;
+late List<PublicHospital> hospitalSctionList;
+late List<List<PublicHospital>> hos = [];
 
-List<HosptialsPrivatly> hospitalsListPrivate = [];
-List<PrivateHospital> hospitalSctionListPrivate = [];
-List<List<PrivateHospital>> hosP = [];
+late List<HosptialsPrivatly> hospitalsListPrivate;
+late List<PrivateHospital> hospitalSctionListPrivate;
+late List<List<PrivateHospital>> hosP = [];
 
 fetchHospitals() async {
   http.Response response;
@@ -28,8 +28,7 @@ fetchHospitals() async {
 
     for (int i = 0; i < hospitalsList.length; i++) {
       hospitalSctionList = jsonModels[i]['PublicHospitals']
-          .map<PublicHospital>(
-              (_modelJson) => PublicHospital.fromJson(_modelJson))
+          .map<PublicHospital>((_modelJson) => PublicHospital.fromJson(_modelJson))
           .toList();
 
       hos.add(hospitalSctionList);
@@ -52,21 +51,18 @@ fetchHospitalsPrivate() async {
     response = await http.get(url);
     var jsonModels = json.decode(response.body);
     hospitalsListPrivate = jsonModels
-        .map<HosptialsPrivatly>(
-            (_modelJson) => HosptialsPrivatly.fromJson(_modelJson))
+        .map<HosptialsPrivatly>((_modelJson) => HosptialsPrivatly.fromJson(_modelJson))
         .toList();
     debugPrint('length hospital ${hospitalsListPrivate.length}');
 
     for (int i = 0; i < hospitalsListPrivate.length; i++) {
       hospitalSctionListPrivate = jsonModels[i]['PrivateHospitals']
-          .map<PrivateHospital>(
-              (_modelJson) => PrivateHospital.fromJson(_modelJson))
+          .map<PrivateHospital>((_modelJson) => PrivateHospital.fromJson(_modelJson))
           .toList();
 
       hosP.add(hospitalSctionListPrivate);
 
-      debugPrint(
-          'res hospitalSctionList length ${hospitalSctionListPrivate.length}');
+      debugPrint('res hospitalSctionList length ${hospitalSctionListPrivate.length}');
     }
     debugPrint('res hos length ${hosP.length}');
     debugPrint('res hos  ${hosP[0][0].name}');
@@ -93,9 +89,7 @@ class hospitals extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.7,
               child: ListView.builder(
-                  itemCount: isPublic
-                      ? hospitalsList.length
-                      : hospitalsListPrivate.length,
+                  itemCount:isPublic? hospitalsList.length:hospitalsListPrivate.length,
                   itemBuilder: (context, index) {
                     return Card(
                       clipBehavior: Clip.antiAlias,
@@ -109,7 +103,7 @@ class hospitals extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => allH(
-                                    isPublic ? hos : hosP, index, isPublic),
+                                    isPublic? hos: hosP, index,isPublic),
                               ));
                         },
                         child: Stack(
@@ -117,13 +111,13 @@ class hospitals extends StatelessWidget {
                           children: [
                             Ink.image(
                               image: NetworkImage(
-                                  '$baseUrl${isPublic ? hospitalsList[index].image : hospitalsListPrivate[index].image}'),
+                                  '$baseUrl${isPublic?hospitalsList[index].image:hospitalsListPrivate[index].image}'),
                               height: 180,
                               width: 480,
                               fit: BoxFit.cover,
                             ),
                             Text(
-                              '${isPublic ? hospitalsList[index].type : hospitalsListPrivate[index].type}',
+                              '${isPublic?hospitalsList[index].type:hospitalsListPrivate[index].type}',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
